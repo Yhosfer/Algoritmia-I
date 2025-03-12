@@ -31,9 +31,9 @@ public class ContainerRect {
 //    static private double distanciaEu(Rectangulo rect1){
 //
 //    }
-    static private void areaRec(Rectangulo rect1){
-
-    }
+//    static private void areaRec(Rectangulo rect1){
+//
+//    }
     @Override
     public String toString() {
         StringBuilder cadena = new StringBuilder(String.format("%-11s %-25s %-15s %-15s", "Rectángulo", "Coordenadas", "Distancia", "Área"));
