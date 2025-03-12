@@ -1,10 +1,10 @@
 package Actividades.Actividad01;
 
 public class Verificador {
-    private static int var1 = 0;
-    private static int var2 = 0;
-    private static int var3 = 0;
-    private static int var4 = 0;
+    public static int var1 = 0;
+    public static int var2 = 0;
+    public static int var3 = 0;
+    public static int var4 = 0;
 
     private static void calcularVars(Rectangulo r1) {
         if (r1.getEsquina1().getX() < r1.getEsquina2().getX()) {
