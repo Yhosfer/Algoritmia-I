@@ -1,39 +1,43 @@
 package Actividades.Actividad01;
 
 public class Verificador {
-    public static int var1 = 0;
-    public static int var2 = 0;
-    public static int var3 = 0;
-    public static int var4 = 0;
+    public static double menorX = 0;
+    public static double mayorX = 0;
+    public static double menorY = 0;
+    public static double mayorY = 0;
 
-    private static void calcularVars(Rectangulo r1) {
+    // Comentarios
+    public static void calcularVars(Rectangulo r1) {
+        // Condicional se cumple si x1 es menos que x2 ???
         if (r1.getEsquina1().getX() < r1.getEsquina2().getX()) {
-            var1 = (int) r1.getEsquina1().getX();
-            var2 = (int) r1.getEsquina2().getX();
+            menorX = (double) r1.getEsquina1().getX();
+            mayorX = (double) r1.getEsquina2().getX();
         } else {
-            var2 = (int) r1.getEsquina1().getX();
-            var1 = (int) r1.getEsquina2().getX();
+            mayorX = (double) r1.getEsquina1().getX();
+            menorX = (double) r1.getEsquina2().getX();
         }
 
         if (r1.getEsquina1().getY() < r1.getEsquina2().getY()) {
-            var3 = (int) r1.getEsquina1().getY();
-            var4 = (int) r1.getEsquina2().getY();
+            menorY = (double) r1.getEsquina1().getY();
+            mayorY = (double) r1.getEsquina2().getY();
         } else {
-            var4 = (int) r1.getEsquina1().getY();
-            var3 = (int) r1.getEsquina2().getY();
+            mayorY = (double) r1.getEsquina1().getY();
+            menorY = (double) r1.getEsquina2().getY();
         }
     }
+
+
 
     public static boolean esSobrePos(Rectangulo r1, Rectangulo r2) {
         calcularVars(r1);
 
-        if (r2.getEsquina1().getX() > var1 && r2.getEsquina1().getX() < var2) {
+        if (r2.getEsquina1().getX() > menorX && r2.getEsquina1().getX() < mayorX) {
             return true;
-        } else if (r2.getEsquina2().getX() > var1 && r2.getEsquina2().getX() < var2) {
+        } else if (r2.getEsquina2().getX() > menorX && r2.getEsquina2().getX() < mayorX) {
             return true;
-        } else if (r2.getEsquina1().getY() > var3 && r2.getEsquina1().getY() < var4) {
+        } else if (r2.getEsquina1().getY() > menorY && r2.getEsquina1().getY() < mayorY) {
             return true;
-        } else if (r2.getEsquina2().getY() > var3 && r2.getEsquina2().getY() < var4) {
+        } else if (r2.getEsquina2().getY() > menorY && r2.getEsquina2().getY() < mayorY) {
             return true;
         } else {
             return false;
@@ -43,14 +47,14 @@ public class Verificador {
     public static boolean esJunto(Rectangulo r1, Rectangulo r2) {
         calcularVars(r1);
 
-        if (var1 == (int) r2.getEsquina1().getX() || var1 == (int) r2.getEsquina2().getX()) {
+        if (menorX == (double) r2.getEsquina1().getX() || menorX == (double) r2.getEsquina2().getX()) {
             return true;
-        } else if (var2 == (int) r2.getEsquina1().getX() || var2 == (int) r2.getEsquina2().getX()) {
+        } else if (mayorX == (double) r2.getEsquina1().getX() || mayorX == (double) r2.getEsquina2().getX()) {
             return true;
         } else {
-            if (var3 == (int) r2.getEsquina1().getY() || var3 == (int) r2.getEsquina2().getY()) {
+            if (menorY == (double) r2.getEsquina1().getY() || menorY == (double) r2.getEsquina2().getY()) {
                 return true;
-            } else if (var4 == (int) r2.getEsquina1().getY() || var4 == (int) r2.getEsquina2().getY()) {
+            } else if (mayorY == (double) r2.getEsquina1().getY() || mayorY == (double) r2.getEsquina2().getY()) {
                 return true;
             } else {
                 return false;
