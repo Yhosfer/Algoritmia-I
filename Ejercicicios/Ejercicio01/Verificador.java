@@ -6,6 +6,7 @@ public class Verificador {
     public static double menorY = 0;
     public static double mayorY = 0;
 
+
     // Comentarios
     public static void calcularVars(Rectangulo r1) {
         // Condicional se cumple si x1 es menos que x2 ???
@@ -30,20 +31,19 @@ public class Verificador {
 
     public static boolean esSobrePos(Rectangulo r1, Rectangulo r2) {
         calcularVars(r1);
+        double r1minX = menorX;
+        double r1maxX = mayorX;
+        double r1minY = menorY;
+        double r1maxY = mayorY;
+        calcularVars(r2);
+        double r2minX = menorX;
+        double r2maxX = mayorX;
+        double r2minY = menorY;
+        double r2maxY = mayorY;
 
-        if (r2.getEsquina1().getX() > menorX && r2.getEsquina1().getX() < mayorX) {
-            return true;
-        } else if (r2.getEsquina2().getX() > menorX && r2.getEsquina2().getX() < mayorX) {
-            return true;
-        } else if (r2.getEsquina1().getY() > menorY && r2.getEsquina1().getY() < mayorY) {
-            return true;
-        } else if (r2.getEsquina2().getY() > menorY && r2.getEsquina2().getY() < mayorY) {
-            return true;
-        } else {
-            return false;
-        }
+        return (Math.max(r1minX, r2minX) < Math.min(r1maxX, r2maxX)) &&
+                (Math.max(r1minY, r2minY) < Math.min(r1maxY, r2maxY));
     }
-
     public static boolean esJunto(Rectangulo r1, Rectangulo r2) {
         calcularVars(r1);
 
