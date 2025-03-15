@@ -30,6 +30,17 @@ public class Rectangulo{
         double areaCalc = (Verificador.mayorX - Verificador.menorX)*(Verificador.mayorY - Verificador.menorY);
         return areaCalc;
     }
+    static double areainter(Rectangulo r1, Rectangulo r2){
+        Verificador.calcularVars(r1);
+        double r1minX = Verificador.menorX, r1maxX = Verificador.mayorX, r1minY = Verificador.menorY, r1maxY = Verificador.mayorY;
+
+        Verificador.calcularVars(r2);
+        double r2minX = Verificador.menorX, r2maxX = Verificador.mayorX, r2minY = Verificador.menorY, r2maxY = Verificador.mayorY;
+
+        double base = Math.min(r1maxX, r2maxX) - Math.max(r1minX, r2minX);
+        double altura = Math.min(r1maxY, r2maxY) - Math.max(r1minY, r2minY);
+        return base * altura;
+        }
 
     @Override
     public String toString() {
