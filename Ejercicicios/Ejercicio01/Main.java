@@ -8,6 +8,7 @@ public class Main {
         Coordenada Coord1 = new Coordenada(1, 1);
         Coordenada Coord2 = new Coordenada(3, 3);
         System.out.println("Coordenada 1: " + Coord1);
+        System.out.println("Coordenada 2: " + Coord2);
 
         System.out.println("Distancia Euclidania MI: " + Coord2.distancia(Coord1));
         System.out.println("Distacian Euclidania MC: " + Coordenada.distancia(Coord1, Coord2));
@@ -36,5 +37,6 @@ public class Main {
 
         System.out.println("\n");
         System.out.print(contenedor);
+        System.out.println("\nárea de intersección: "+Rectangulo.areainter(r1,r2));
     }
 }

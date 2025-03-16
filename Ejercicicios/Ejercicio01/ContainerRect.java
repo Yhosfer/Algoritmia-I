@@ -10,20 +10,25 @@ public class ContainerRect {
     static int tamanioArrayRects = 4;
     static int numRec;
 
+
     public ContainerRect(){
+        // Inicializa los arreglos
         rects = new ArrayList<>();
         distanciaEuclidiana = new ArrayList<>();
         areasRec = new ArrayList<>();
         this.numRec = 0;
     }
+    // El siguiente método agrega los datos del rectangulo
+    // A los arreglos correspondientes
     public void agregarRectangulo(Rectangulo rect){
         if (numRec <= tamanioArrayRects ){
             rects.add(rect);
             numRec++;
-
+            //
             distanciaEuclidiana.add(rect.calcularEuclidiana());
             areasRec.add(rect.area(rect));
         } else {
+            //
             System.out.println("Array lleno ");
         }
     }
@@ -40,7 +45,7 @@ public class ContainerRect {
         Rectangulo rec;
         for (int x = 0; x < rects.size(); x++){
             rec = rects.get(x);
-            cadena.append(String.format("\n%-11d %-25s %-15f %-15f", x, rec.info(), rec.calcularEuclidiana(), rec.area(rec)));
+            cadena.append(String.format("\n%-11d %-25s %-15f %-15f", x+1, rec.info(), rec.calcularEuclidiana(), rec.area(rec)));
         }
         return cadena.toString();
     }
