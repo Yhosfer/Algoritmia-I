@@ -34,18 +34,18 @@ public class Verificador {
         //Este metodo ve si el valor de una de las esquinas del segundo rectangulo
         // estan entre los apartados menor y mayor del primero y saber si esta sobre este
         calcularVars(r1);
+        double r1minX = menorX;
+        double r1maxX = mayorX;
+        double r1minY = menorY;
+        double r1maxY = mayorY;
+        calcularVars(r2);
+        double r2minX = menorX;
+        double r2maxX = mayorX;
+        double r2minY = menorY;
+        double r2maxY = mayorY;
 
-        if (r2.getEsquina1().getX() > menorX && r2.getEsquina1().getX() < mayorX) {
-            return true;
-        } else if (r2.getEsquina2().getX() > menorX && r2.getEsquina2().getX() < mayorX) {
-            return true;
-        } else if (r2.getEsquina1().getY() > menorY && r2.getEsquina1().getY() < mayorY) {
-            return true;
-        } else if (r2.getEsquina2().getY() > menorY && r2.getEsquina2().getY() < mayorY) {
-            return true;
-        } else {
-            return false;
-        }
+        return (Math.max(r1minX, r2minX) < Math.min(r1maxX, r2maxX)) &&
+                (Math.max(r1minY, r2minY) < Math.min(r1maxY, r2maxY));
     }
 
     public static boolean esJunto(Rectangulo r1, Rectangulo r2) {
