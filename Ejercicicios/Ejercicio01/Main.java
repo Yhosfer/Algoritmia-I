@@ -31,7 +31,7 @@ public class Main {
 
         double area1=r1.area(r1);
 
-        ContainerRect contenedor = new ContainerRect();
+        ContainerRect contenedor = new ContainerRect(4);
         contenedor.agregarRectangulo(r1);
         contenedor.agregarRectangulo(r2);
 

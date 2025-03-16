@@ -7,7 +7,7 @@ public class Coordenada{
     private double x;
     private double y;
 
-    //Constructor, initialize x, y attributes to zero
+    //Constructor por defecto que inicializa por en cero (x, y)
     public Coordenada( ){
         this.x = 0.0;
         this.y = 0.0;
@@ -57,6 +57,6 @@ public class Coordenada{
     @Override
     public String toString(){
         return "    x: "+ this.x +
-                "\n   y: "+ this.y;
+                "\n    y: "+ this.y;
     }
 }

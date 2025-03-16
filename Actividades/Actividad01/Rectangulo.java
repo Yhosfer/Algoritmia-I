@@ -4,11 +4,13 @@ import java.util.*;
 public class Rectangulo{
     private Coordenada esquina1;
     private Coordenada esquina2;
+
     // Constructor
     public Rectangulo(Coordenada c1, Coordenada  c2) {
-        setEsquina1(c1);
-        setEsquina2(c2);
+        this.esquina1 = c1;
+        this.esquina2 = c2;
     }
+    // Setters y Getters
     public void setEsquina1 (Coordenada coo) {
         this.esquina1 = coo;
     }
@@ -21,7 +23,7 @@ public class Rectangulo{
     public Coordenada getEsquina2 () {
         return this.esquina2;
     }
-
+    // Metodo toString
     @Override
     public String toString() {
         return "esquina1 = " + esquina1 + ", esquina2 = " + esquina2;

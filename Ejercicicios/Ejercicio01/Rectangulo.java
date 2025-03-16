@@ -25,7 +25,7 @@ public class Rectangulo{
         return Coordenada.distancia(esquina1, esquina2);
     }
 
-    double area(Rectangulo r1){
+    public double area(Rectangulo r1){
         Verificador.calcularVars(r1);
         double areaCalc = (Verificador.mayorX - Verificador.menorX)*(Verificador.mayorY - Verificador.menorY);
         return areaCalc;
