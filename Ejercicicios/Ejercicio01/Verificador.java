@@ -61,7 +61,7 @@ public class Verificador {
             }
         }
     }
-    // Este método
+
     public static boolean esDisjunto(Rectangulo r1, Rectangulo r2) {
         return !esSobrePos(r1, r2) && !esJunto(r1,r2);
     }
