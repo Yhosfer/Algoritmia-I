@@ -12,20 +12,9 @@ public class Main {
         Coordenada Coord4 = new Coordenada(6, 6);
         Rectangulo r2 = new Rectangulo(Coord3, Coord4);
 
-        //Con el fin de que no sea tan engorroso el code lo que hicimos aquí
-        //fue asignar las validaciones a variables y directamente con un
-        //nombre mejor preparado colocarlas en los bloques if
-        boolean sobrepuestos = Verificador.esSobrePos(r1, r2);
-        boolean juntos = Verificador.esJunto(r1, r2);
 
-        // Verificaciones para saber si están juntos, sobrepuestos o disjuntos
-        if (sobrepuestos) {
-            System.out.println("Rectángulos sobrepuestos");
-        } else if (juntos) {
-            System.out.println("Rectángulos juntos");
-        } else {
-            System.out.println("Rectángulos disjuntos");
-        }
+        // Se llama al metodo static para verificar si esta sobre o juntos o disjuntos
+        Verificador.verificar(r1, r2);
 
         ContainerRect contenedor = new ContainerRect(4);
         contenedor.agregarRectangulo(r1);
@@ -37,4 +26,5 @@ public class Main {
 
         new Visualizador(r1, r2);
     }
+
 }

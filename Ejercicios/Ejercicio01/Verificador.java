@@ -43,14 +43,26 @@ public class Verificador {
 
     public static boolean esJunto(Rectangulo r1, Rectangulo r2) {
         calcularVars(r1);
+        if (esSobrePos(r1, r2)) {
+            return (menorX == r2.getEsquina1().getX() || menorX == r2.getEsquina2().getX()) ||
+                    (mayorX == r2.getEsquina1().getX() || mayorX == r2.getEsquina2().getX()) ||
+                    (menorY == r2.getEsquina1().getY() || menorY == r2.getEsquina2().getY()) ||
+                    (mayorY == r2.getEsquina1().getY() || mayorY == r2.getEsquina2().getY());
+        }
+        return false;
 
-        return (menorX == r2.getEsquina1().getX() || menorX == r2.getEsquina2().getX()) ||
-                (mayorX == r2.getEsquina1().getX() || mayorX == r2.getEsquina2().getX()) ||
-                (menorY == r2.getEsquina1().getY() || menorY == r2.getEsquina2().getY()) ||
-                (mayorY == r2.getEsquina1().getY() || mayorY == r2.getEsquina2().getY());
     }
 
     public static boolean esDisjunto(Rectangulo r1, Rectangulo r2) {
         return !esSobrePos(r1, r2) && !esJunto(r1, r2);
+    }
+    public static void verificar(Rectangulo r1, Rectangulo r2) {
+        if (esSobrePos(r1, r2)) {
+            System.out.println("Rectángulos sobrepuestos");
+        } else if (esJunto(r1, r2)) {
+            System.out.println("Rectángulos juntos");
+        } else {
+            System.out.println("Rectángulos disjuntos");
+        }
     }
 }
