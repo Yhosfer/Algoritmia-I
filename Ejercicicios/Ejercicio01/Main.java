@@ -5,10 +5,9 @@ public class Main {
         System.out.println("Hello World");
 
 
-        Coordenada Coord1 = new Coordenada(1, 1);
-        Coordenada Coord2 = new Coordenada(3, 3);
+        Coordenada Coord1 = new Coordenada(9 , 5);
+        Coordenada Coord2 = new Coordenada(4  , 0);
         System.out.println("Coordenada 1: " + Coord1);
-        System.out.println("Coordenada 2: " + Coord2);
 
         System.out.println("Distancia Euclidania MI: " + Coord2.distancia(Coord1));
         System.out.println("Distacian Euclidania MC: " + Coordenada.distancia(Coord1, Coord2));
@@ -17,13 +16,19 @@ public class Main {
 
 //        System.out.println("Rectangulo 1: " + r1);
 
-        Coordenada Coord3 = new Coordenada(2, 2);
-        Coordenada Coord4 = new Coordenada(6, 6);
+        Coordenada Coord3 = new Coordenada(5, 11);
+        Coordenada Coord4 = new Coordenada(0 , 6);
         Rectangulo r2 = new Rectangulo(Coord3, Coord4);
+        if(Verificador.esSobrePos(r1, r2)) {
+            double areai = Rectangulo.areainter(r1, r2);
+            System.out.println("Area Sombreada: " + areai);
+        }
+
 
         // Verificador verificador = new Verificador();
         if(Verificador.esSobrePos(r1, r2)){
             System.out.println("Rectángulos sobrepuestos: " + Verificador.esSobrePos(r1, r2));
+
         } else if (Verificador.esJunto(r1, r2)){
             System.out.println("Rectángulos juntos: " + Verificador.esJunto(r1, r2));
 
@@ -31,12 +36,11 @@ public class Main {
 
         double area1=r1.area(r1);
 
-        ContainerRect contenedor = new ContainerRect(4);
+        ContainerRect contenedor = new ContainerRect();
         contenedor.agregarRectangulo(r1);
         contenedor.agregarRectangulo(r2);
 
         System.out.println("\n");
         System.out.print(contenedor);
-        System.out.println("\nárea de intersección: "+Rectangulo.areainter(r1,r2));
     }
 }
