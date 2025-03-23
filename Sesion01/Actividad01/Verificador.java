@@ -1,4 +1,4 @@
-package Actividades.Actividad01;
+package Sesion01.Actividad01;
 
 public class Verificador {
     public static double menorX = 0;

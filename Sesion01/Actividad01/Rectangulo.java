@@ -1,6 +1,5 @@
-package Actividades.Actividad01;
+package Sesion01.Actividad01;
 
-import java.util.*;
 public class Rectangulo{
     private Coordenada esquina1;
     private Coordenada esquina2;

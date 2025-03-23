@@ -1,4 +1,4 @@
-package Ejercicios.Ejercicio01;
+package Sesion01.Ejercicio01;
 
 public class Coordenada {
     private double x;

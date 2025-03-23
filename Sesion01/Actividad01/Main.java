@@ -1,4 +1,4 @@
-package Actividades.Actividad01;
+package Sesion01.Actividad01;
 
 public class Main {
     public static void main(String[] args) {
