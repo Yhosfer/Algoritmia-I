@@ -1,4 +1,4 @@
-package Ejercicio04;
+package Ejercicio05;
 
 public class Golosina implements Comparable<Golosina> {
     private String nombre;

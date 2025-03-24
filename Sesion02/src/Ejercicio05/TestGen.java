@@ -1,4 +1,4 @@
-package Ejercicio04;
+package Ejercicio05;
 
 
 public class TestGen {
@@ -22,6 +22,9 @@ public class TestGen {
 
         Golosina gasolina2 = new Golosina("Gasolina",10);
         cajota.search(gasolina2);
+
+        // Test Chocolatinas
+
     }
 }
 
