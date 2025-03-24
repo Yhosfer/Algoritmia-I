@@ -21,5 +21,6 @@ public class Chocolatina implements Comparable<Chocolatina> {
     @Override
     public int compareTo(Chocolatina choco) {
         return marca.compareTo(choco.getMarca());
+
     }
 }
