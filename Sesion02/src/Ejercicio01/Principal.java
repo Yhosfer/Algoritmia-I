@@ -13,15 +13,29 @@ public class Principal {
         bolsaChoco.add(c3);
 
         Chocolatina c4 = new Chocolatina("ferrero");
-
-    
         System.out.println(exist(bolsaChoco,c4));
+
+        Chocolatina[] chocos = new Chocolatina[3];
+        chocos[0] = c;
+        chocos[1] = c2;
+        chocos[2] = c3;
+        System.out.println(existArray(chocos, c4));
 
 
     }
+    // Metodo generico con Arraylist?
     public static <T extends Comparable<T>> boolean exist(Bolsa<T> x, T y){
         for (T t : x){
             if (t.compareTo(y) == 0){
+                return true;
+            }
+        }
+        return false;
+    }
+    // metodo genereco con Arrays
+    public static <T extends Comparable<T>> boolean existArray(T[] x,T v){
+        for (T choco: x){
+            if (choco.compareTo(v) == 0){
                 return true;
             }
         }
