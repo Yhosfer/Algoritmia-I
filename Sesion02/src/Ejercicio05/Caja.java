@@ -23,7 +23,7 @@ public class Caja <T> implements Iterable<T>{
     public void agregarObjeto(T objeto){
         lista.add(objeto);
     }
-
+    @override
     public Iterator<T> iterator(){
         return lista.iterator();
     }
