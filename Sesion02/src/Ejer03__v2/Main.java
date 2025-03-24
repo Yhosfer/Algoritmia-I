@@ -1,5 +1,7 @@
 package Ejer03__v2;
 
+import Actividad01.Golosina;
+
 public class Main {
     public static void main(String[] args) {
         Cajoneria<Integer> cajoneria = new Cajoneria<>();
@@ -30,6 +32,8 @@ public class Main {
         System.out.println("Se elimino el objeto " + obj);
 
         cajoneria.search(8);
+
+
         System.out.println(cajoneria);
     }
 }
