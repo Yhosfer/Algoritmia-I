@@ -24,7 +24,22 @@ public class TestGen {
         cajota.search(gasolina2);
 
         // Test Chocolatinas
+        Cajoneria<Chocolatina> andamio = new Cajoneria<Chocolatina>();
+        Caja<Chocolatina> cajaChoco1 = new Caja<>("Gris");
+        Caja<Chocolatina> cajaChoco2 = new Caja<>("Rojo");
+
+        Chocolatina choco1 = new Chocolatina("Nestle");
+        Chocolatina choco2 = new Chocolatina("CocoaSuyo");
+        Chocolatina choco3 = new Chocolatina("CocoaSuyo");
+
+        cajaChoco1.agregarObjeto(choco1);
+        cajaChoco2.agregarObjeto(choco2);
+
+        andamio.agregarCaja(cajaChoco1);
+        andamio.agregarCaja(cajaChoco2);
+
+        andamio.search(choco3);
+        System.out.println(andamio);
 
     }
 }
-
