@@ -1,6 +1,6 @@
-package Actividad01;
+package Ejercicio01;
 
-public class Chocolatina {
+public class Chocolatina implements Comparable<Chocolatina> {
     private String marca;
 
     public Chocolatina(String marca) {
@@ -16,5 +16,10 @@ public class Chocolatina {
     @Override
     public String toString() {
         return "Chocolatina (" + "marca: " + marca + ')';
+    }
+
+    @Override
+    public int compareTo(Chocolatina choco) {
+        return marca.compareTo(choco.getMarca());
     }
 }

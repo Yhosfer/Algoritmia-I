@@ -1,4 +1,4 @@
-package Actividad01;
+package Ejercicio01;
 
 public class Golosina {
     private String nombre;
