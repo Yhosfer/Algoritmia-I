@@ -1,4 +1,4 @@
-package Ejercicio05;
+package Ejercicio05_06;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,7 +23,9 @@ public class Caja <T> implements Iterable<T>{
     public void agregarObjeto(T objeto){
         lista.add(objeto);
     }
-
+    public void remove(T objeto){
+        lista.remove(objeto);
+    }
     public Iterator<T> iterator(){
         return lista.iterator();
     }
@@ -31,7 +33,7 @@ public class Caja <T> implements Iterable<T>{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (T objeto : lista) {
-            sb.append("[").append(objeto.toString()).append("]");
+            sb.append(objeto.toString());
         }
         return sb.toString();
     }

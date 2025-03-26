@@ -1,4 +1,4 @@
-package Actividad04;
+package Actividad05;
 
 public class DemoMetodoGenerico {
     static <T extends Comparable<T>> boolean igualArrays (T[] x, T[] y){

@@ -18,6 +18,11 @@ public class Bolsa <T> implements Iterable<T> {
             throw new RuntimeException("No caben mas");
         }
     }
+    public void mostrarBolsa(){
+        for (T objeto : lista){
+            System.out.println(objeto);
+        }
+    }
 
     public Iterator<T> iterator(){
         return lista.iterator();
