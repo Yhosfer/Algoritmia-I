@@ -22,14 +22,13 @@ public class Test03_04 {
         cajoneria.agregarCaja(caja1);
         cajoneria.agregarCaja(caja2);
         cajoneria.agregarCaja(caja3);
+        // Busqueda
 
         cajoneria.search(7);
         //error si
-
+        //
         Integer obj = cajoneria.delete(6);
-        System.out.println("Se elimino el objeto " + obj);
 
-        cajoneria.search(8);
 
 
         System.out.println(cajoneria);
