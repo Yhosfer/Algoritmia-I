@@ -1,6 +1,6 @@
 package Ejercicio03_04__v2;
 
-public class Main {
+public class Test03_04 {
     public static void main(String[] args) {
         Cajoneria<Integer> cajoneria = new Cajoneria<>();
         Caja<Integer> caja1 = new Caja<>("Rojo");
