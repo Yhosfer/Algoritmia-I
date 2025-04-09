@@ -22,6 +22,6 @@ public class Golosina {
     }
     @Override
     public String toString() {
-        return "Golosina (" + "nombre=" + nombre + ", peso:" + peso + ')';
+        return "Golosina (" + "nombre :" + nombre + ", peso:" + peso + ')';
     }
 }

@@ -10,8 +10,6 @@ public class Principal {
         bolsaChoco.add(c2);
         bolsaChoco.add(c3);
 
-        for (Chocolatina chocolatina : bolsaChoco) {
-            System.out.println(chocolatina);
-        }
+        bolsaChoco.mostrarBolsa();
     }
 }

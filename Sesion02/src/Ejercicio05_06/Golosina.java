@@ -1,4 +1,4 @@
-package Ejercicio05;
+package Ejercicio05_06;
 
 public class Golosina implements Comparable<Golosina> {
     private String nombre;
@@ -22,14 +22,17 @@ public class Golosina implements Comparable<Golosina> {
     }
     @Override
     public String toString() {
-        return (nombre+","+ peso);
+        return ("("+nombre+","+ peso+")");
     }
 
     @Override
     public int compareTo(Golosina o) {
-        if (this.getPeso() == o.getPeso() && this.getNombre().equals(o.getNombre())) {
-            return 0;
+        // Comparar primero por peso
+        int resultado = Double.compare(this.peso, o.peso);
+        if (resultado == 0) {
+            // Si el peso es el mismo, comparar por nombre (alfabéticamente)
+            return this.nombre.compareTo(o.nombre);
         }
-        return 1;
+        return resultado;
     }
 }

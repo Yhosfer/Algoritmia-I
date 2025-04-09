@@ -1,4 +1,4 @@
-package Ejer03_04__v2;
+package Ejercicio03_04__v2;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,16 +18,14 @@ public class Cajoneria <T extends Comparable<T>> implements Iterable<Caja<T>> {
 
     public void search(T objeto){
         int pos = 0;
+        System.out.println("Buscando:" + objeto);
         for (Caja<T> c : caja) {
             for (T x : c){
                 if(x.compareTo(objeto) == 0){
-                    System.out.println("Se encontro el objeto en la posicion " + pos + " y la caja es color " + c.getColor());
+                    System.out.println("Se encontro el objeto ("+ objeto+")en la posicion " + pos + " y la caja es color " + c.getColor());
                     return;
-
                 }
-
             }
-
             pos++;
         }
 
@@ -38,7 +36,7 @@ public class Cajoneria <T extends Comparable<T>> implements Iterable<Caja<T>> {
         for (Caja<T> c : caja) {
             for (T x : c){
                 if(x.compareTo(objeto) == 0){
-                    caja.remove(x);
+                    c.borrarObjeto(x);
                     System.out.println("Se elimino el objeto " + x);
                     return x;
                 }

@@ -1,4 +1,4 @@
-package Ejer03_04__v2;
+package Ejercicio03_04__v2;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,6 +22,9 @@ public class Caja <T> implements Iterable<T>{
 
     public void agregarObjeto(T objeto){
         lista.add(objeto);
+    }
+    public void borrarObjeto(T objeto){
+        lista.remove(objeto);
     }
 
     public Iterator<T> iterator(){
