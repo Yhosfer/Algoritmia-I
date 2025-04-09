@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class MenorElemento {
 
     public static int seleccionarElemento(int[] arreglo, int k) {
@@ -20,11 +18,7 @@ public class MenorElemento {
     }
 
     private static int particionar(int[] arreglo, int izquierda, int derecha) {
-        Random aleatorio = new Random();
-        int indicePivote = izquierda + aleatorio.nextInt(derecha - izquierda + 1);
-        int valorPivote = arreglo[indicePivote];
-
-        intercambiar(arreglo, indicePivote, derecha);
+        int valorPivote = arreglo[derecha]; // Pivote fijo: el último elemento
         int indiceAlmacenamiento = izquierda;
 
         for (int i = izquierda; i < derecha; i++) {
@@ -43,5 +37,6 @@ public class MenorElemento {
         arreglo[i] = arreglo[j];
         arreglo[j] = temp;
     }
+}
 
 
