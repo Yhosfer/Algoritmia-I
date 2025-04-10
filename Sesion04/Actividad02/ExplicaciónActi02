@@ -1,0 +1,21 @@
+3. Explicación de 3 niveles
+    Nivel 3 (raíz):
+        Se dibuja la primera línea vertical hacia arriba desde el centro inferior de la ventana.
+        
+        Coordenadas: desde (x, y) hasta (x2, y2) usando trigonometría con ángulo -90°.
+        
+    Nivel 2:
+        Desde el punto final anterior (x2, y2), se dibujan 2 ramas:
+        
+        Una con ángulo -90° - 45° = -135° (rama izquierda).
+        
+        Otra con ángulo -90° + 45° = -45° (rama derecha).
+        
+        El lado de estas ramas es 70% del lado anterior (lado * 0.7).
+        
+    Nivel 1:
+        Desde cada extremo de las ramas anteriores, se repite lo mismo:
+        
+        Se generan 2 nuevas ramas desde cada punto.
+        
+        Ya que el nivel es 1, después de esto la recursión termina.

@@ -175,7 +175,7 @@ public static int[] reconstruirRuta(int[][] C, int[][] T, int origen, int destin
         return new int[]{origen};
     }
     
-    // Si el costo mínimo es igual a la tarifa directa, vamos directo
+    // Si el costo mínimo es igual ExplicaciónActi02 la tarifa directa, vamos directo
     if (T[origen][destino] > 0 && C[origen][destino] == T[origen][destino]) {
         return new int[]{origen, destino};
     }

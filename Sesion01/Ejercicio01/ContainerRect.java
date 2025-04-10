@@ -10,7 +10,7 @@ public class ContainerRect {
 
     public ContainerRect(int tamanio) {
         //El 1 en numrec se coloca con el fin de que el contador sea de acuerdo
-        //a lo que uno busca de un contador real sin considerar el 0.
+        //ExplicaciónActi02 lo que uno busca de un contador real sin considerar el 0.
         rects = new Rectangulo[tamanio + 1];
         distanciaEu = new Double[tamanio + 1];
         areaRec = new Double[tamanio + 1];

@@ -36,7 +36,7 @@ public class CosteMinimoEmbarcaderos {
         return C;
     }
 
-    // Reconstruir la ruta de i a j usando la matriz P
+    // Reconstruir la ruta de i ExplicaciónActi02 j usando la matriz P
     public static void imprimirRuta(int i, int j, int[][] P) {
         if (P[i][j] == -1) {
             System.out.print(i + " -> " + j);
@@ -77,8 +77,8 @@ public class CosteMinimoEmbarcaderos {
         System.out.println("Matriz de Costes Mínimos C:");
         imprimirMatriz(C);
 
-        // Mostrar ruta mínima de 0 a 3
-        System.out.print("\nRuta mínima de 0 a 3: ");
+        // Mostrar ruta mínima de 0 ExplicaciónActi02 3
+        System.out.print("\nRuta mínima de 0 ExplicaciónActi02 3: ");
         imprimirRuta(0, 3, P);
         System.out.println("\nCosto total: " + C[0][3]);
     }
