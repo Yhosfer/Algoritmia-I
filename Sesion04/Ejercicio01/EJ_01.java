@@ -1,3 +1,5 @@
+package Sesion04.Ejercicio01;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

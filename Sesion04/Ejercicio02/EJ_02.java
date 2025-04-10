@@ -1,3 +1,5 @@
+package Sesion04.Ejercicio02;
+
 public class EJ_02 {
 
     public static void main(String[] args) {

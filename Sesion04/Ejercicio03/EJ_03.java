@@ -1,3 +1,5 @@
+package Sesion04.Ejercicio03;
+
 public class EJ_03 {
 
     public static int[][] calcularCostosMinimos(int[][] T) {
