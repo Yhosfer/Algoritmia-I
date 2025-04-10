@@ -1,3 +1,5 @@
+package Sesion04.Ejercicio01;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -35,6 +37,7 @@ public class EJ_01 {
     }
 
 
+    // Verifica si n es potencia de 2
     public static boolean isPotencia(int n) {
 
         if (n <= 0) {
@@ -53,6 +56,7 @@ public class EJ_01 {
 
     }
 
+
     public static boolean suma_sub_arr(int n_el, int[] arr, int meta) {
 
         int suma_obligatoria = 0;
@@ -64,7 +68,7 @@ public class EJ_01 {
 
             if (isPotencia(num)) {
 
-                suma_obligatoria += num;
+                suma_obligatoria += num;  // Suma obligatoria de potencias de 2
 
             } else {
 
@@ -72,13 +76,13 @@ public class EJ_01 {
 
                     if (i < n_el - 1 && arr[i + 1] % 2 != 0) {
 
-                        continue;
+                        continue;  // Excluye múltiplos de 5 seguidos de impar
 
                     }
 
                 }
 
-                numeros_sobrantes.add(num);
+                numeros_sobrantes.add(num);  // Números opcionales
 
             }
 
@@ -86,7 +90,7 @@ public class EJ_01 {
 
         if (suma_obligatoria > meta) {
 
-            return false;
+            return false;  // Si ya nos pasamos con los obligatorios simplemente retorna el false
 
         }
 
@@ -95,9 +99,12 @@ public class EJ_01 {
         return suma_sub_sub_arr(numeros_sobrantes, sobrante_meta);
     }
 
+
+    // Resuelve el problema de suma del subconjunto de números restantes
     public static boolean suma_sub_sub_arr(List<Integer> numeros_sobrantes, int sobrante_meta) {
+
         boolean[] sumas = new boolean[sobrante_meta + 1];
-        sumas[0] = true;
+        sumas[0] = true;  // Suma 0 es siempre posible
 
         for (int num : numeros_sobrantes) {
 
@@ -105,7 +112,7 @@ public class EJ_01 {
 
                 if (sumas[j - num]) {
 
-                    sumas[j] = true;
+                    sumas[j] = true;  // Si podemos formar j-num, podemos formar j
 
                 }
 
@@ -113,7 +120,7 @@ public class EJ_01 {
 
         }
 
-        return sumas[sobrante_meta];
+        return sumas[sobrante_meta];  // Resultado final
 
     }
 
