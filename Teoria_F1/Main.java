@@ -1,7 +1,4 @@
-package aa;
-import java.util.ArrayList;
-import java.util.Scanner;
-
+package Teoria_F1;
 import java.util.ArrayList;
 import java.util.Scanner;
 
