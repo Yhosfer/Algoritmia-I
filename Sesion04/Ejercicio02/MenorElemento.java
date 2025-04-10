@@ -1,3 +1,5 @@
+package Sesion04.Ejercicio02;
+
 public class MenorElemento {
 
     public static int seleccionarElemento(int[] arreglo, int k) {
