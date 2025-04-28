@@ -227,7 +227,7 @@ public class Lista_Enlazada <T extends Comparable<T>> {
             return;
         }
         Nodo<T> pivote1 = head;
-        while (pivote1 != null) {
+        while (pivote1.next != null) {
             pivote1 = pivote1.next;
         }
 
