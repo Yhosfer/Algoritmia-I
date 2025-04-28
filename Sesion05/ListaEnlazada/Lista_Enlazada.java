@@ -51,34 +51,36 @@ public class Lista_Enlazada <T extends Comparable<T>> {
 
 
     void insertarEnPosicion(int posicion, T valor) {
-        if (posicion < 0 ) {
-            System.out.println("Posición inválida");
-            return;
-        }
-        if (length() < posicion){
-            System.out.println("Fuera de posición");
-            return;
-        }
-
-        if (posicion == 0) {
-            Nodo<T> nuevo = new Nodo<>(valor);
-            nuevo.next = head;
-            head = nuevo;
-            return;
-        }
-
-        Nodo<T> pivote = head;
-        int contador = 0;
-
-        while (contador < posicion - 1) {
-            pivote = pivote.next;
-            contador++;
-        }
-
-        Nodo<T> nuevo = new Nodo<>(valor);
-        nuevo.next = pivote.next;
-        pivote.next = nuevo;
+    if (posicion < 0) {
+        System.out.println("Posición inválida");
+        return;
     }
+
+    Nodo<T> nuevo = new Nodo<>(valor);
+
+    if (posicion == 0) {
+        nuevo.next = head;
+        head = nuevo;
+        return;
+    }
+
+    Nodo<T> pivote = head;
+    int contador = 0;
+
+    while (pivote != null && contador < posicion - 1) {
+        pivote = pivote.next;
+        contador++;
+    }
+
+    if (pivote == null) {
+        System.out.println("Fuera de posición");
+        return;
+    }
+
+    nuevo.next = pivote.next;
+    pivote.next = nuevo;
+}
+
 
     void insertFirst(T x){
 
