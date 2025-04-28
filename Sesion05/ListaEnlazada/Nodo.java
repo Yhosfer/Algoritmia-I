@@ -1,6 +1,6 @@
 package Sesion05.ListaEnlazada;
 
-public class Nodo <T> {
+public class Nodo <T extends Comparable<T>> {
     public T valor;
     public Nodo<T> next;
 
