@@ -141,28 +141,21 @@ public class Lista_Enlazada <T extends Comparable<T>> {
 
 
 
-    boolean seencuentra(T x){
-
-        if (isEmptyList()){
+    boolean seEncuentra(T x) {
+        if (isEmptyList()) {
             return false;
         }
 
         Nodo<T> pivote = head;
 
-        if (pivote.valor.compareTo(x) == 0){
-            return true;
-        }
-
-        while (pivote.next != null){
-
-            pivote = pivote.next;
-
-            if(pivote.valor == x){
+        while (pivote != null) {
+            if (pivote.valor.compareTo(x) == 0) {
                 return true;
             }
+            pivote = pivote.next;
         }
-        return false;
 
+        return false;
     }
 
     Lista_Enlazada<T> invertirLista() {
