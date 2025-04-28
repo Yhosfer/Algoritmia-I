@@ -1,4 +1,4 @@
-package Sesion05;
+package Sesion05.ListaEnlazada;
 
 public class Lista_Enlazada <T> {
 
@@ -16,14 +16,17 @@ public class Lista_Enlazada <T> {
 
     int lenght(){
 
+        if(isEmptyList()){
+            return 0;
+        }
+
         Nodo<T> pivote = head;
-        int cont = 0;
+        int cont = 1;
 
         while (pivote.next != null){
             cont++;
             pivote = pivote.next;
         }
-
         return cont;
 
     }
@@ -42,6 +45,7 @@ public class Lista_Enlazada <T> {
         }
 
         while (pivote.next != null && pivote.next.valor!= x){
+            pivote = pivote.next;
             cont++;
         }
 
@@ -65,7 +69,6 @@ public class Lista_Enlazada <T> {
             newNode.next = auxiliar;
 
         }
-
     }
 
     void insertLast(T x) {
@@ -83,7 +86,6 @@ public class Lista_Enlazada <T> {
             }
 
             pivote.next = new Nodo<>(x);
-
         }
     }
 
@@ -101,9 +103,11 @@ public class Lista_Enlazada <T> {
         Nodo<T> pivote = head;
 
         if(search(x) == 0){
+
             Nodo<T> auxiliar = pivote.next;
             head = auxiliar;
             return;
+
         }
 
         while (pivote.next.valor != x){
@@ -114,12 +118,13 @@ public class Lista_Enlazada <T> {
 
         Nodo<T> auxiliar = pivote.next;
         pivote.next = auxiliar.next;
-
-
-
     }
 
     boolean seencuentra(T x){
+
+        if (isEmptyList()){
+            return false;
+        }
 
         Nodo<T> pivote = head;
 
@@ -134,10 +139,77 @@ public class Lista_Enlazada <T> {
             if(pivote.valor == x){
                 return true;
             }
+        }
+        return false;
+
+    }
+
+    Lista_Enlazada<T> invertirLista() {
+
+        Lista_Enlazada<T> listaInvertida = new Lista_Enlazada<>();
+        Nodo<T> pivote = head;
+        while (pivote != null) {
+
+            listaInvertida.insertFirst(pivote.valor);
+            pivote = pivote.next;
 
         }
+        return listaInvertida;
 
-        return false;
+    }
+
+    // Imprime la lista
+    public void listar(){
+        if (isEmptyList()) {
+            System.out.println("Lista vacia");
+        }
+        Nodo<T> actual = head;
+        while (actual.next != null){
+            System.out.println(actual.valor + " miku ");
+            actual = actual.next;
+        }
+        System.out.println(actual.valor + " miku ");
+    }
+
+    public void ordenarLista() {
+        if (isEmptyList()) {
+            return;
+        }
+
+        Nodo<T> pivote = head;
+
+        while (pivote != null) {
+            Nodo<T> siguiente = pivote.next;
+
+            while (siguiente != null) {
+
+                if (pivote.valor.compareTo(siguiente.valor) > 0) {
+
+                    T temp = pivote.valor;
+                    pivote.valor = siguiente.valor;
+                    siguiente.valor = temp;
+
+                }
+
+                siguiente = siguiente.next;
+
+            }
+
+            pivote = pivote.next;
+
+        }
+    }
+    public void concatenarListas(Lista_Enlazada<T> otraLista) {
+        if (head == null) {
+            head = otraLista.head;
+            return;
+        }
+        Nodo<T> pivote1 = head;
+        while (pivote1 != null) {
+            pivote1 = pivote1.next;
+        }
+
+        pivote1.next=otraLista.head;
 
     }
 

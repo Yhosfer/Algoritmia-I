@@ -1,4 +1,4 @@
-package Sesion05;
+package Sesion05.ListaEnlazada;
 
 public class Nodo <T> {
     public T valor;
@@ -7,7 +7,7 @@ public class Nodo <T> {
     public Nodo(T valor) {
 
         this.valor = valor;
+        this.next = null;
 
     }
-
 }
