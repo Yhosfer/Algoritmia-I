@@ -1,6 +1,6 @@
 package Sesion05.ListaEnlazada;
 
-public class Lista_Enlazada <T> {
+public class Lista_Enlazada <T extends Comparable<T>> {
 
     Nodo<T> head;
 
@@ -14,7 +14,7 @@ public class Lista_Enlazada <T> {
         return head == null;
     }
 
-    int lenght(){
+    int length(){
 
         if(isEmptyList()){
             return 0;
@@ -55,6 +55,36 @@ public class Lista_Enlazada <T> {
 
         return cont+1;
 
+    }
+
+    void insertarEnPosicion(int posicion, T valor) {
+        if (posicion < 0 ) {
+            System.out.println("Posición inválida");
+            return;
+        }
+        if (length() < posicion){
+            System.out.println("Fuera de posición");
+            return;
+        }
+
+        if (posicion == 0) {
+            Nodo<T> nuevo = new Nodo<>(valor);
+            nuevo.next = head;
+            head = nuevo;
+            return;
+        }
+
+        Nodo<T> pivote = head;
+        int contador = 0;
+
+        while (contador < posicion - 1) {
+            pivote = pivote.next;
+            contador++;
+        }
+
+        Nodo<T> nuevo = new Nodo<>(valor);
+        nuevo.next = pivote.next;
+        pivote.next = nuevo;
     }
 
     void insertFirst(T x){
