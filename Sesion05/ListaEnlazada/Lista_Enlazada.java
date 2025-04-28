@@ -41,7 +41,7 @@ public class Lista_Enlazada <T extends Comparable<T>> {
 
     while (pivote != null) {
         if (pivote.valor.compareTo(x) == 0) {
-            return cont; // Encontrado, devuelve posición
+            return cont; 
         }
         pivote = pivote.next;
         cont++;
