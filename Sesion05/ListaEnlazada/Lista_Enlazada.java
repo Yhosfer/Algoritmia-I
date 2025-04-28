@@ -133,11 +133,10 @@ public class Lista_Enlazada <T extends Comparable<T>> {
 
         }
 
-        while (pivote.next.valor != x){
-
+        while (pivote.next != null && pivote.next.valor.compareTo(x) != 0) {
             pivote = pivote.next;
-
         }
+
 
         Nodo<T> auxiliar = pivote.next;
         pivote.next = auxiliar.next;
