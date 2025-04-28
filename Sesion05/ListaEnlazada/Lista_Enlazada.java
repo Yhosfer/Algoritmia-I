@@ -121,7 +121,6 @@ public class Lista_Enlazada <T extends Comparable<T>> {
 
         }
 
-        //Separación
 
         Nodo<T> pivote = head;
 
@@ -150,7 +149,7 @@ public class Lista_Enlazada <T extends Comparable<T>> {
 
         Nodo<T> pivote = head;
 
-        if (pivote.valor == x){
+        if (pivote.valor.compareTo(x) == 0){
             return true;
         }
 
