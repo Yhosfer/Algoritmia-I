@@ -34,6 +34,7 @@ public class Main {
     }
 
     // Método genérico de Selection Sort
+
     public static <T extends Comparable<T>> void selectionSort(ArrayList<T> lista) {
         int n = lista.size();
 

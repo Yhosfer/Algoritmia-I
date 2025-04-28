@@ -233,5 +233,21 @@ public class Lista_Enlazada <T extends Comparable<T>> {
         pivote1.next=otraLista.head;
 
     }
+    boolean sonIguales(Lista_Enlazada<T> otraLista) {
+        Nodo<T> pivote1 = this.head;
+        Nodo<T> pivote2 = otraLista.head;
+
+        while (pivote1 != null && pivote2 != null) {
+            if (!pivote1.valor.equals(pivote2.valor)) {
+                return false;
+            }
+            pivote1 = pivote1.next;
+            pivote2 = pivote2.next;
+        }
+
+        return pivote1 == null && pivote2 == null;
+    }
+
+
 
 }
