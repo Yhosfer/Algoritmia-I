@@ -112,34 +112,32 @@ public class Lista_Enlazada <T extends Comparable<T>> {
         }
     }
 
-    void removeNode(T x){
-
-        if(!seencuentra(x) || isEmptyList()){
-
-            System.out.println("Lista vacia");
-            return;
-
-        }
-
-
-        Nodo<T> pivote = head;
-
-        if(search(x) == 0){
-
-            Nodo<T> auxiliar = pivote.next;
-            head = auxiliar;
-            return;
-
-        }
-
-        while (pivote.next != null && pivote.next.valor.compareTo(x) != 0) {
-            pivote = pivote.next;
-        }
-
-
-        Nodo<T> auxiliar = pivote.next;
-        pivote.next = auxiliar.next;
+   void removeNode(T x) {
+    if (isEmptyList()) {
+        System.out.println("Lista vacía");
+        return;
     }
+
+    Nodo<T> pivote = head;
+    Nodo<T> auxiliar = null;
+
+    while (pivote != null) {
+        if (pivote.datos.compareTo(x) == 0) {
+            if (auxiliar == null) {
+                head = pivote.next;
+            } else {
+                auxiliar.next = pivote.next;
+            }
+            return; 
+        }
+        auxiliar = pivote;
+        pivote = pivote.next;
+    }
+
+    System.out.println("Elemento no encontrado");
+}
+
+
 
     boolean seencuentra(T x){
 
