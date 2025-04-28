@@ -35,27 +35,20 @@ public class Lista_Enlazada <T extends Comparable<T>> {
         head = null;
     }
 
-    int search(T x){
+    int search(T x) {
+    Nodo<T> pivote = head;
+    int cont = 0;
 
-        Nodo<T> pivote = head;
-        int cont = 0;
-
-        if (pivote.valor == x){
-            return 0;
+    while (pivote != null) {
+        if (pivote.valor.compareTo(x) == 0) {
+            return cont; // Encontrado, devuelve posición
         }
-
-        while (pivote.next != null && pivote.next.valor!= x){
-            pivote = pivote.next;
-            cont++;
-        }
-
-        if (cont == 0){
-            return -1;
-        }
-
-        return cont+1;
-
+        pivote = pivote.next;
+        cont++;
     }
+    return -1; // No encontrado
+}
+
 
     void insertarEnPosicion(int posicion, T valor) {
         if (posicion < 0 ) {
