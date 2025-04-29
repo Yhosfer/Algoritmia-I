@@ -1,8 +1,5 @@
 package Sesion05.ListaDoble;
 
-
-import Sesion05.ListaEnlazada.Nodo;
-
 public class Lista_Doblemente_Enlazada<T extends Comparable<T>> {
 
     NodoDos<T> head;
