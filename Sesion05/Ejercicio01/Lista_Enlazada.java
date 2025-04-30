@@ -47,8 +47,7 @@ public class Lista_Enlazada<T extends Comparable<T>> {
         cont++;
     }
     return -1; // No encontrado
-}
-
+    }
 
     void insertarEnPosicion(int posicion, T valor) {
         if (posicion < 0 ) {
@@ -112,32 +111,6 @@ public class Lista_Enlazada<T extends Comparable<T>> {
         }
     }
 
-    public boolean removeNode(T x){
-
-        if(!seEncuentraV2(x) || isEmptyList()){
-            System.out.println("Lista vacia");
-            return false;
-
-        }
-
-        Nodo<T> pivote = head;
-
-        if(search(x) == 0){
-
-            Nodo<T> auxiliar = pivote.next;
-            head = auxiliar;
-            return true;
-        }
-
-        while (pivote.next != null && pivote.next.valor.compareTo(x) != 0) {
-            pivote = pivote.next;
-        }
-
-        Nodo<T> auxiliar = pivote.next;
-        pivote.next = auxiliar.next;
-        return true;
-    }
-
     public boolean removeNodev2(T x) {
         if (isEmptyList()) {
             System.out.println("Lista vacía");
@@ -166,31 +139,6 @@ public class Lista_Enlazada<T extends Comparable<T>> {
         }
 
         return false; // En caso de que no se encuentre al final
-    }
-
-
-    public boolean seEncuentra(T x){
-
-        if (isEmptyList()){
-            return false;
-        }
-
-        Nodo<T> pivote = head;
-
-        if (pivote.valor.compareTo(x) == 0){
-            return true;
-        }
-
-        while (pivote.next != null){
-
-            pivote = pivote.next;
-
-            if(pivote.valor == x){
-                return true;
-            }
-        }
-        return false;
-
     }
 
     public boolean seEncuentraV2(T x){
@@ -296,24 +244,4 @@ public class Lista_Enlazada<T extends Comparable<T>> {
         return pivote1 == null && pivote2 == null;
     }
 
-    public T obtenerTareaPrioridad(){
-        if(isEmptyList()) {
-            return null;
-        }
-
-        Nodo<T> pivote = head;
-        Nodo<T> mayorPri = head;
-
-        while (pivote.next !=  null){
-            if (mayorPri.valor.compareTo(pivote.next.valor)>0){
-                mayorPri = pivote;
-            }else {
-                mayorPri = mayorPri.next;
-            }
-            pivote = pivote.next;
-        }
-
-        return mayorPri.valor;
-
-    }
 }
