@@ -1,4 +1,4 @@
-package Sesion05.TestEenClase;
+package Sesion05.PruebasEnClase;
 
 public class ListaEnlazadaV2<T extends Comparable<T>>{
     private Node<T> first;

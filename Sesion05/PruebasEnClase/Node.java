@@ -1,4 +1,4 @@
-package Sesion05.TestEenClase;
+package Sesion05.PruebasEnClase;
 
 public class Node <T extends Comparable<T>>{
     private T elemento;
