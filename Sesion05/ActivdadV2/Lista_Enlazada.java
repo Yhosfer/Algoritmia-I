@@ -114,7 +114,7 @@ public class Lista_Enlazada<T extends Comparable<T>> {
 
     public boolean removeNode(T x){
 
-        if(!seEncuentra(x) || isEmptyList()){
+        if(!seEncuentraV2(x) || isEmptyList()){
             System.out.println("Lista vacia");
             return false;
 
@@ -137,6 +137,37 @@ public class Lista_Enlazada<T extends Comparable<T>> {
         pivote.next = auxiliar.next;
         return true;
     }
+
+    public boolean removeNodev2(T x) {
+        if (isEmptyList()) {
+            System.out.println("Lista vacía");
+            return false;
+        }
+
+        if (!seEncuentraV2(x)) {
+            System.out.println("Elemento no encontrado");
+            return false;
+        }
+
+        Nodo<T> pivote = head;
+
+        if (pivote.valor.compareTo(x) == 0) {
+            head = head.next;
+            return true;
+        }
+
+        while (pivote.next != null && pivote.next.valor.compareTo(x) != 0) {
+            pivote = pivote.next;
+        }
+
+        if (pivote.next != null) {
+            pivote.next = pivote.next.next;
+            return true;
+        }
+
+        return false; // En caso de que no se encuentre al final
+    }
+
 
     public boolean seEncuentra(T x){
 
@@ -162,6 +193,23 @@ public class Lista_Enlazada<T extends Comparable<T>> {
 
     }
 
+    public boolean seEncuentraV2(T x){
+        if (isEmptyList()){
+            return false;
+        }
+
+        Nodo<T> pivote = head;
+
+        while (pivote != null){
+            if (pivote.valor != null && pivote.valor.compareTo(x) == 0){
+                return true;
+            }
+            pivote = pivote.next;
+        }
+        return false;
+    }
+
+
     Lista_Enlazada<T> invertirLista() {
 
         Lista_Enlazada<T> listaInvertida = new Lista_Enlazada<>();
@@ -178,8 +226,9 @@ public class Lista_Enlazada<T extends Comparable<T>> {
 
     // Imprime la lista
     public void listar(){
-        if (isEmptyList() && head == null) {
-            System.out.println("Lista vacia");
+        if (isEmptyList()) {
+            System.out.println("Lista vacía");
+            return;
         }
         Nodo<T> actual = head;
         while (actual.next != null){
@@ -188,6 +237,7 @@ public class Lista_Enlazada<T extends Comparable<T>> {
         }
         System.out.println(actual.valor + " miku ");
     }
+
 
     public void ordenarLista() {
         if (isEmptyList()) {
@@ -266,6 +316,4 @@ public class Lista_Enlazada<T extends Comparable<T>> {
         return mayorPri.valor;
 
     }
-
-
 }

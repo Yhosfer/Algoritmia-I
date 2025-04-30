@@ -10,8 +10,8 @@ public class MainVerFinal {
         listaTareas.agregarTarea(new Tarea("Tarea Universidad", 3));
         listaTareas.agregarTarea(new Tarea("Tarea Univiversidad Urgente", 4));
 
-        //listaTareas.mostrarTareas();
-        //listaTareas.eliminarTarea(new Tarea("Tarea Academia", 1));
+        //Eliminar tarea;
+        System.out.println("Eliminado: "+ listaTareas.eliminarTarea(new Tarea("Tarea Academia", 2)));
         listaTareas.mostrarTareas();
 
         // Imprime el total de Tareas
@@ -31,14 +31,13 @@ public class MainVerFinal {
 
         // Tareas completas
         GestorDeTarea<Tarea> listaTareasCompletas = new GestorDeTarea<>();
-        listaTareas.transferir_tarea_completa(new Tarea("Tarea Universidad Urgente", 4), listaTareasCompletas);
+        listaTareas.transferir_tarea_completa(new Tarea("Tarea Univiversidad Urgente", 4), listaTareasCompletas);
         System.out.println("");
         // Mostrar ambas Listas
         System.out.println("Tareas: ");
         listaTareas.mostrarTareas();
         System.out.println("Tareas completas: ");
-        //listaTareasCompletas.mostrarTareas();
-
+        listaTareasCompletas.mostrarTareas();
 
     }
 }

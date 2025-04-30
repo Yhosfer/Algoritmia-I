@@ -14,11 +14,11 @@ public class GestorDeTarea <T extends Comparable<T>> {
      }
 
      public boolean eliminarTarea(T tarea){
-        return lista.removeNode(tarea);
+        return lista.removeNodev2(tarea);
      }
 
      public boolean contieneTarea(T terea){
-        return lista.seEncuentra(terea);
+        return lista.seEncuentraV2(terea);
      }
      public void mostrarTareas(){
         lista.listar();
@@ -38,12 +38,11 @@ public class GestorDeTarea <T extends Comparable<T>> {
 
      public void transferir_tarea_completa(T tarea, GestorDeTarea t){
         if(contieneTarea(tarea)){
-            eliminarTarea(tarea);
+
             t.agregarTarea(tarea);
             System.out.println("Tarea transferida");
         } else {
             System.out.println("Tarea no transferida, no la encontramos");
         }
      }
-
 }
