@@ -53,9 +53,8 @@ public class Tarea implements Comparable<Tarea> {
     @Override
     public String toString() {
         return "Tarea{" +
-                "titulo='" + titulo + '\'' +
-                ", prioridad=" + prioridad +
-                '}';
+                "Titulo :" + titulo + '\n' +
+                ", prioridad: " + prioridad +"}";
     }
 
 }

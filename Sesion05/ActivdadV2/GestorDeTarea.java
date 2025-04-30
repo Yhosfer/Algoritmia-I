@@ -36,10 +36,11 @@ public class GestorDeTarea <T extends Comparable<T>> {
         lista = lista.invertirLista();
      }
 
-     public void transferir_tarea(T tarea, GestorDeTarea t){
+     public void transferir_tarea_completa(T tarea, GestorDeTarea t){
         if(contieneTarea(tarea)){
             eliminarTarea(tarea);
             t.agregarTarea(tarea);
+            System.out.println("Tarea transferida");
         } else {
             System.out.println("Tarea no transferida, no la encontramos");
         }

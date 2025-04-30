@@ -178,7 +178,7 @@ public class Lista_Enlazada<T extends Comparable<T>> {
 
     // Imprime la lista
     public void listar(){
-        if (isEmptyList()) {
+        if (isEmptyList() && head == null) {
             System.out.println("Lista vacia");
         }
         Nodo<T> actual = head;
