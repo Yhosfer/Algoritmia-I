@@ -5,7 +5,6 @@ public class Nodo<T extends Comparable<T>> {
     public Nodo<T> next;
 
     public Nodo(T valor) {
-
         this.valor = valor;
         this.next = null;
 
