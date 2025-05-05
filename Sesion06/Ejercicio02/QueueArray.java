@@ -18,7 +18,7 @@ public class QueueArray <E> implements Queue<E> {
 
     @Override
     public boolean isEmpty() {
-        return currentSize == -1;
+        return currentSize == 0;
     }
 
     @Override
