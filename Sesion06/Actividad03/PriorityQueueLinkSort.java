@@ -1,3 +1,5 @@
+package Sesion06.Actividad03;
+
 public class PriorityQueueLinkSort<E, N extends Comparable<N>> implements PriorityQueue<E, N> {
 
     private class EntryNode {
