@@ -59,4 +59,18 @@ public class QueueLink <E> implements Queue<E>{
             temp = temp.getNext();
         }
     }
+
+    public void printQueue() {
+        if (isEmpty()) {
+            System.out.println("Vacía");
+        } else {
+            Node<E> current = first;
+            while (current != null) {
+                System.out.print(current.getData() + " ");
+                current = current.getNext();
+            }
+            System.out.println();
+        }
+    }
+
 }
