@@ -75,6 +75,5 @@ public class QueueArray <E> implements Queue<E> {
         currentSize--;
         front = 0;
         back = currentSize -1;
-
     }
 }

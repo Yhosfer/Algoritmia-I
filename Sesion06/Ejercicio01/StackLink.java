@@ -1,3 +1,5 @@
+package Sesion06.Ejercicio01;
+
 public class StackLink<E> implements Stack<E> {
     private Nodo<E> top;
 
