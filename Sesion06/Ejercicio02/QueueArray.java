@@ -6,10 +6,10 @@ public class QueueArray <E> implements Queue<E> {
     private int front;
     private int back;
     public QueueArray(int tamanio) {
-        this.currentSize = -1;
-        arrayCola = (E[]) new Object[tamanio];
-        front = 0;
-        back = -1;
+        this.currentSize = 0;
+        this.arrayCola = (E[]) new Object[tamanio];
+        this.front = 0;
+        this.back = -1;
     }
     @Override
     public boolean isEmpty() {
@@ -17,10 +17,11 @@ public class QueueArray <E> implements Queue<E> {
     }
     @Override
     public void enqueue(E element) {
-        if (currentSize == (arrayCola.length - 1)) {
+        if (currentSize == arrayCola.length ) {
             System.out.println("Cola Llena. ");
             return;
         }
+
         arrayCola[++back] = element;
         currentSize++;
 
@@ -32,6 +33,7 @@ public class QueueArray <E> implements Queue<E> {
         }
         E firstElement = arrayCola[front];
         front++;
+        desplazarElementos();
         return firstElement;
     }
 
@@ -44,7 +46,7 @@ public class QueueArray <E> implements Queue<E> {
     }
 
     @Override
-    public E back() throws ExceptionIsEmpty {
+    public E backElemento() throws ExceptionIsEmpty {
         if (isEmpty()) {
             throw new ExceptionIsEmpty();
         }
@@ -57,5 +59,22 @@ public class QueueArray <E> implements Queue<E> {
         for (int i = front; i <= back; i++) {
             System.out.println(arrayCola[i] + " --");
         }
+        System.out.println();
+    }
+    public void desplazarElementos() throws ExceptionIsEmpty {
+        E[] auxArray;
+        auxArray = (E[]) new Object[arrayCola.length];
+        int indice = 0;
+        System.out.println("cola: "+ backElemento());
+        // copiar elementos de la cola
+        for (int i = front; i <= back; i++) {
+            auxArray[indice] = arrayCola[i];
+            indice++;
+        }
+        arrayCola = auxArray;
+        currentSize--;
+        front = 0;
+        back = currentSize -1;
+
     }
 }

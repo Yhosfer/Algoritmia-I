@@ -12,8 +12,19 @@ public class TestEjer02 {
             cola.enqueue(5);
 
             System.out.println("Atendiendo a First: " + cola.dequeue());
-            System.out.println("Last: "+cola.back());
+            System.out.println("Last: "+cola.backElemento());
+            //cola.print();
+//
+            cola.enqueue(6);
+            cola.enqueue(7);
             cola.print();
+//            System.out.println("\nPrueba despues: ");
+//            cola.enqueue(6);
+            System.out.println("Atendiendo a First: " + cola.dequeue());
+            cola.print();
+            System.out.println("First: "+cola.front());
+            System.out.println("Last: "+cola.backElemento());
+
 
 
         } catch (ExceptionIsEmpty e){
