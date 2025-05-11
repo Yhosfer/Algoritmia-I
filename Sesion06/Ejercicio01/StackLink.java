@@ -12,15 +12,19 @@ public class StackLink<E> implements Stack<E> {
     }
 
     public E pop() throws ExceptionIsEmpty {
+
         if (isEmpty()) throw new ExceptionIsEmpty("Stack vacío.");
         E val = top.valor;
         top = top.next;
         return val;
+
     }
 
     public E top() throws ExceptionIsEmpty {
+
         if (isEmpty()) throw new ExceptionIsEmpty("Stack vacío.");
         return top.valor;
+
     }
 
     public boolean isEmpty() {
@@ -28,12 +32,17 @@ public class StackLink<E> implements Stack<E> {
     }
 
     public String toString() {
+
         StringBuilder sb = new StringBuilder("Stack: ");
         Nodo<E> actual = top;
+
         while (actual != null) {
             sb.append(actual.valor).append(" ");
             actual = actual.next;
         }
+
         return sb.toString();
+
     }
+
 }

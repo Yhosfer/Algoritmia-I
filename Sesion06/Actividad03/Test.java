@@ -1,3 +1,5 @@
+package Sesion06.Actividad03;
+
 public class Test {
     public static void main(String[] args) {
         PriorityQueue<String, Integer> cola = new PriorityQueueLinkSort<>();

@@ -1,4 +1,7 @@
+package Sesion06.Actividad03;
+
 public class Nodo<E> {
+
     private E data;
     private Nodo<E> next;
 
