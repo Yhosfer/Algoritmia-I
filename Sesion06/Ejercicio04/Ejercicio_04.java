@@ -18,11 +18,15 @@ public class Ejercicio_04 {
                     stack.push(c);
 
                 } else if (c == ')' || c == ']' || c == '}') {
-                    if (stack.isEmpty()) return false;
+                    if (stack.isEmpty()) {
+                        return false;
+                    }
 
                     char top = stack.pop();
 
-                    if (!matches(top, c)) return false;
+                    if (!matches(top, c)){
+                        return false;
+                    }
 
                 }
 

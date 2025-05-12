@@ -6,7 +6,7 @@ import Sesion07a.bstreeInterface.BinarySearchTree;
 import Sesion06.Actividad02.QueueLink;
 
 public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
-    private class Node<E> {
+    private class Node<E extends Comparable<E>> {
         E data;
         Node<E> left, right;
 
@@ -37,12 +37,15 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
             return new Node<>(data);
         }
         int cmp = data.compareTo(node.data);
-        if (cmp < 0)
+        if (cmp < 0) {
             node.left = insertRecursivo(node.left, data);
-        else if (cmp > 0)
+        }
+        else if (cmp > 0) {
             node.right = insertRecursivo(node.right, data);
-        else
+        }
+        else {
             throw new ItemDuplicated("Elemento duplicado: " + data);
+        }
         return node;
     }
 
@@ -425,8 +428,9 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
 
         return hojas * height(root.data);
 
-    }
 
+    }
+    // imprime graficamente el arbol izquiera root -->
     public void drawBST() {
         drawBST(this.root, 0);
     }
@@ -446,19 +450,18 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
 
         drawBST(node.left, depth + 1);
     }
-
-
+    // compara 2 arboles
     public static <E extends Comparable<E>> boolean sameArea(LinkedBST<E> t1, LinkedBST<E> t2) throws ItemNoFound, ExceptionIsEmpty {
         return t1.areaBST() == t2.areaBST();
     }
 
-
+//
     public String parenthesize() {
         StringBuilder sb = new StringBuilder();
         RecParenthesize(root, sb, 0);
         return sb.toString();
     }
-
+//
     private void RecParenthesize(Node<E> node, StringBuilder sb, int depth) {
         if (node != null) {
             // Sangría para este nodo
@@ -501,6 +504,7 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
             System.out.println("Uwu:  "+aaa.search(55));
 
             aaa.inOrder();
+            aaa.drawBST();
         } catch (Exception e) {
             System.out.println(e);
         }
