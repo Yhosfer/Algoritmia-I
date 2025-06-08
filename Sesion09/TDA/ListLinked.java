@@ -83,4 +83,19 @@ public class ListLinked<T> {
         }
         return resultado.toString().trim();
     }
+
+    public T removeFirst() {
+        if (cabeza == null) {
+            System.out.println("Lista vacía");
+        }
+        T dato = cabeza.dato;
+        cabeza = cabeza.next;
+        tamaño--;
+        return dato;
+    }
+
+    public boolean isEmpty() {
+        return tamaño == 0;
+    }
+
 }

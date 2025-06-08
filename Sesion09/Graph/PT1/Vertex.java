@@ -1,4 +1,4 @@
-package Sesion09.GraphND;
+package Sesion09.Graph.PT1;
 
 import Sesion09.TDA.ListLinked;
 
