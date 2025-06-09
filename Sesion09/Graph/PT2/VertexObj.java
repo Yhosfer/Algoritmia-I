@@ -1,6 +1,6 @@
 package Sesion09.Graph.PT2;
 
-public class VertexObj<V, E> {
+public class VertexObj<V> {
     protected V info;
     protected int position;
 
