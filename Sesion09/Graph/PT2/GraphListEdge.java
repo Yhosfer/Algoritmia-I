@@ -470,8 +470,4 @@ public class GraphListEdge<V, E> {
         return complemento;
     }
 
-    public boolean esAutoComplementario() {
-        GraphListEdge<V,E> comp = obtenerComplemento();
-        return this.esIsomorfo(comp);
-    }
 }
