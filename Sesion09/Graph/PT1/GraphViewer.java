@@ -8,18 +8,17 @@ public class GraphViewer<E> extends JFrame {
 
     private GraphLink<E> grafo;
     private Map<E, Point> posiciones;
-    private final int RADIO_NODO = 25;
 
     public GraphViewer(GraphLink<E> grafo) {
         this.grafo = grafo;
         this.posiciones = new HashMap<>();
 
-        setTitle("Grafo");
+        setTitle("WAOS");
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null);
 
-        calcularPosiciones();
+
+        calcularPosicionesSimples();
 
         add(new JPanel() {
             @Override
@@ -31,18 +30,19 @@ public class GraphViewer<E> extends JFrame {
         });
     }
 
-    private void calcularPosiciones() {
+    private void calcularPosicionesSimples() {
         int numNodos = grafo.listVertex.size();
         if (numNodos == 0) return;
 
-        int centroX = 300;
-        int centroY = 250;
-        int radio = 150;
+
+        int nodosPerFila = 3;
 
         for (int i = 0; i < numNodos; i++) {
-            double angulo = 2 * Math.PI * i / numNodos;
-            int x = centroX + (int)(radio * Math.cos(angulo));
-            int y = centroY + (int)(radio * Math.sin(angulo));
+            int fila = i / nodosPerFila;
+            int columna = i % nodosPerFila;
+
+            int x = 150 + columna * 150;
+            int y = 150 + fila * 150;
 
             E nodo = grafo.listVertex.get(i).getData();
             posiciones.put(nodo, new Point(x, y));
@@ -50,9 +50,10 @@ public class GraphViewer<E> extends JFrame {
     }
 
     private void dibujar(Graphics g) {
-        // Dibujar aristas
+
         g.setColor(Color.BLACK);
         for (int i = 0; i < grafo.listVertex.size(); i++) {
+
             Vertex<E> vertice = grafo.listVertex.get(i);
             E origen = vertice.getData();
             Point posOrigen = posiciones.get(origen);
@@ -61,26 +62,34 @@ public class GraphViewer<E> extends JFrame {
                 E destino = vertice.listAdj.get(j).getRefDest().getData();
                 Point posDestino = posiciones.get(destino);
                 g.drawLine(posOrigen.x, posOrigen.y, posDestino.x, posDestino.y);
+
+                Edge<E> arista = vertice.listAdj.get(j);
+                if (arista.weight > -1) {
+                    int midX = (posOrigen.x + posDestino.x) / 2;
+                    int midY = (posOrigen.y + posDestino.y) / 2;
+                    g.setColor(Color.RED);
+                    g.drawString("(" + arista.weight + ")", midX, midY);
+                    g.setColor(Color.BLACK);
+                }
             }
         }
 
-        // Dibujar nodos
+
         for (E nodo : posiciones.keySet()) {
             Point pos = posiciones.get(nodo);
 
-            // Círculo azul
-            g.setColor(Color.CYAN);
-            g.fillOval(pos.x - RADIO_NODO/2, pos.y - RADIO_NODO/2, RADIO_NODO, RADIO_NODO);
 
-            // Borde negro
+            g.setColor(Color.BLUE);
+            g.fillOval(pos.x - 20, pos.y - 20, 40, 40);
+
+
             g.setColor(Color.BLACK);
-            g.drawOval(pos.x - RADIO_NODO/2, pos.y - RADIO_NODO/2, RADIO_NODO, RADIO_NODO);
+            g.drawOval(pos.x - 20, pos.y - 20, 40, 40);
 
-            // Texto del nodo
+
+            g.setColor(Color.WHITE);
             String texto = nodo.toString();
-            FontMetrics fm = g.getFontMetrics();
-            int ancho = fm.stringWidth(texto);
-            g.drawString(texto, pos.x - ancho/2, pos.y + 5);
+            g.drawString(texto, pos.x - 5, pos.y + 5);
         }
     }
 

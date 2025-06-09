@@ -12,10 +12,10 @@ public class Edge<E> {
         this.refDest = refDest;
         this.weight = weight;
     }
+
     public Vertex<E> getRefDest() {
         return refDest;
     }
-
 
     public boolean equals(Object o) {
         if(o instanceof Edge<?>) {
