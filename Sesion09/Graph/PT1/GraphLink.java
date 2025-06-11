@@ -51,6 +51,13 @@ public class GraphLink<E> {
         if (!origen.listAdj.contains(arista)) {
             origen.listAdj.addLast(arista);
         }
+
+        if(!directed) {
+            Edge<E> aristaInversa = new Edge<>(origen);
+            if (!destino.listAdj.contains(aristaInversa)){
+                destino.listAdj.addLast(aristaInversa);
+            }
+        }
     }
 
     public void insertEdgeWeight(E verOri, E verDes, int weight) {
@@ -94,18 +101,29 @@ public class GraphLink<E> {
         }
 
         Edge<E> arista = new Edge<>(destino);
-        return origen.listAdj.contains(arista);
+        boolean existeArista = origen.listAdj.contains(arista);
+
+        // Si es no dirigido, también buscar en la dirección inversa
+        if (!directed && !existeArista) {
+            Edge<E> aristaInversa = new Edge<>(origen);
+            existeArista = destino.listAdj.contains(aristaInversa);
+        }
+
+        return existeArista;
     }
 
     public void removeVertex(E v) {
         Vertex<E> vertice = getVertex(v);
         if (vertice == null) return;
-
+        /* Se busca en la lista de adyancias de cada vertice si
+        alguna arista tiene como destino el vertice a eliminar
+        caso existir se remueve.
+         */
         for (int i = 0; i < listVertex.size(); i++) {
             Vertex<E> actual = listVertex.get(i);
             actual.listAdj.remove(new Edge<>(vertice));
         }
-
+        // Al eliminar el vertice se elimina la lista de adyacencia.
         listVertex.remove(vertice);
 
     }
