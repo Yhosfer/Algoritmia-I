@@ -7,9 +7,13 @@ import Sesion09.TDA.PriorityQueue;
 
 public class GraphLink<E> {
     protected ListLinked<Vertex<E>> listVertex;
+    protected boolean directed;
 
     public GraphLink() {
         listVertex = new ListLinked<Vertex<E>>();
+    }
+    public GraphLink(boolean directed) {
+        this.directed = directed;
     }
 
     public void insertVertex(E data) {
@@ -62,10 +66,18 @@ public class GraphLink<E> {
             destino = new Vertex<>(verDes);
             listVertex.addLast(destino);
         }
-
+        // insertamos origen --> dest
         Edge<E> arista = new Edge<>(destino, weight);
         if (!origen.listAdj.contains(arista)) {
             origen.listAdj.addLast(arista);
+        }
+
+        if(!directed) {
+            Edge<E> aristaInversa = new Edge<>(origen, weight);
+            if (!destino.listAdj.contains(aristaInversa)){
+                destino.listAdj.addLast(aristaInversa);
+            }
+
         }
     }
 
@@ -103,8 +115,12 @@ public class GraphLink<E> {
         Vertex<E> destino = getVertex(z);
 
         if (origen == null || destino == null) return;
-
+        // Eliminar arista origen --> destino
         origen.listAdj.remove(new Edge<>(destino));
+        // Si no es dirigido, elimnar tambien destino -> origen
+        if (!directed) {
+            destino.listAdj.remove(new Edge<>(origen));
+        }
     }
 
     private void resetVisited() {

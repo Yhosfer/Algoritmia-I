@@ -65,13 +65,12 @@ public class GraphListEdge<V, E> {
         if (vertex != null) {
             secVertex.remove(vertex);
             ListLinked<EdgeObj<V, E>> edgesToRemove = new ListLinked<>();
-            for (int i = secEdge.size() - 1; i >= 0; i--) {
+            for (int i = secEdge.size(); i >=0 ; i--) {
                 EdgeObj<V, E> e = secEdge.get(i);
                 if (e.getEndVertex1().equals(vertex) || e.getEndVertex2().equals(vertex)) {
-                    secEdge.remove(i);  
+                    secEdge.remove(e);
+                }
             }
-        }
-
         }
     }
 
@@ -468,4 +467,8 @@ public class GraphListEdge<V, E> {
         return complemento;
     }
 
+    public boolean esAutoComplementario() {
+        GraphListEdge<V,E> comp = obtenerComplemento();
+        return this.esIsomorfo(comp);
+    }
 }
