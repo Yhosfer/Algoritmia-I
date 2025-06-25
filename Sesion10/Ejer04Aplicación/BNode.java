@@ -2,11 +2,12 @@ package Sesion10.Ejer04Aplicación;
 
 import java.util.ArrayList;
 
-public class BNode<E extends Comparable<E>> {
+public class BNode {
+
     protected int idNodo;
     protected int idPadre;
-    protected ArrayList<E> keys;
-    protected ArrayList<BNode<E>> childs;
+    protected ArrayList<RegistroEstudiante> keys;
+    protected ArrayList<BNode> childs;
     protected int count;
 
     public BNode(int n) {
@@ -23,7 +24,7 @@ public class BNode<E extends Comparable<E>> {
         this.childs.add(null);
     }
 
-    public boolean nodeFull() {
+    public boolean nodeFull(int i) {
         return count == keys.size();
     }
 
@@ -31,23 +32,14 @@ public class BNode<E extends Comparable<E>> {
         return count == 0;
     }
 
-    public boolean searchNode(E key, int[] pos) {
+    public boolean searchNode(RegistroEstudiante key, int[] pos) {
         int i = 0;
-
         while (i < count && key.compareTo(keys.get(i)) > 0) {
             i++;
         }
-
-        //Retornamos por referencia la posición de donde se posiciona el nodo
         pos[0] = i;
-
         return (i < count && key.compareTo(keys.get(i)) == 0);
     }
-
-    public boolean nodeFull(int maxKeys) {
-        return count == maxKeys;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
@@ -58,5 +50,4 @@ public class BNode<E extends Comparable<E>> {
         sb.append("]");
         return sb.toString();
     }
-
 }

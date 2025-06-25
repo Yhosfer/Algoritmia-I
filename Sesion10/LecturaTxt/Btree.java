@@ -349,23 +349,19 @@ public class Btree<E extends Comparable<E>> {
         return sb.toString();
     }
 
-    // Debes importar:
-// import java.io.*;
-// import java.util.*;
-
     public static Btree<Integer> building_Btree(String filename) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line;
 
-        // 1️⃣ Leer orden
+        // Leer orden
         int orden = Integer.parseInt(br.readLine().trim());
         Btree<Integer> tree = new Btree<>(orden);
 
-        // 2️⃣ Estructuras para reconstruir nodos
+        // Estructuras para reconstruir nodos
         Map<Integer, List<BNode<Integer>>> levels = new HashMap<>();
         Map<Integer, BNode<Integer>> idMap = new HashMap<>();
 
-        // 3️⃣ Leer nodos
+        // Leer nodos
         while ((line = br.readLine()) != null) {
             String[] parts = line.trim().split(",");
             int nivel = Integer.parseInt(parts[0]);
@@ -384,7 +380,7 @@ public class Btree<E extends Comparable<E>> {
         }
         br.close();
 
-        // 4️⃣ Construir relaciones padre-hijo
+        // Construir relaciones padre-hijo
         for (int nivel = 0; levels.containsKey(nivel); nivel++) {
             List<BNode<Integer>> nodes = levels.get(nivel);
             for (BNode<Integer> node : nodes) {
@@ -392,7 +388,7 @@ public class Btree<E extends Comparable<E>> {
                     tree.root = node; // raíz
                     continue;
                 }
-                // Buscar padre en nivel anterior
+                //  Buscar padre en nivel anterior
                 List<BNode<Integer>> padres = levels.get(nivel - 1);
                 boolean enlazado = false;
                 for (BNode<Integer> padre : padres) {
@@ -412,7 +408,7 @@ public class Btree<E extends Comparable<E>> {
             }
         }
 
-        // 5️⃣ Verificar propiedades B-Tree
+        //  Verificar propiedades B-Tree
         int minKeys = (int) Math.ceil(orden / 2.0) - 1;
         int leafLevel = -1;
         Queue<BNode<Integer>> queue = new LinkedList<>();
@@ -438,6 +434,7 @@ public class Btree<E extends Comparable<E>> {
                     isLeaf = false;
                 }
             }
+
             if (isLeaf) {
                 if (leafLevel == -1) leafLevel = lvl;
                 else if (leafLevel != lvl) {
@@ -448,5 +445,4 @@ public class Btree<E extends Comparable<E>> {
 
         return tree;
     }
-
 }

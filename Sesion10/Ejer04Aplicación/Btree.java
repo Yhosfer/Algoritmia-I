@@ -1,11 +1,11 @@
 package Sesion10.Ejer04Aplicación;
 
-public class Btree<E extends Comparable<E>> {
+public class Btree {
 
-    public BNode<E> root;
+    public BNode root;
     public  int orden; //Cantidad de hijos
     public boolean up;
-    public BNode<E> nDes;
+    public BNode nDes;
     private int idCounter = 1;
 
     public Btree(int orden) {
@@ -19,15 +19,15 @@ public class Btree<E extends Comparable<E>> {
 
     //inicio Inserción
 
-    public void insert(E key) {
+    public void insert(RegistroEstudiante key) {
         up = false;
         nDes = null;
 
-        E mediana = push(root, key);
+        RegistroEstudiante mediana = push(root, key);
 
         //En caso el nodo esté lleno y la mediana suba
         if (up) {
-            BNode<E> nuevaRaiz = new BNode<>(orden);
+            BNode nuevaRaiz = new BNode(orden);
             nuevaRaiz.count = 1;
             nuevaRaiz.keys  .set(0,mediana);
             nuevaRaiz.childs.set(0,root);
@@ -37,7 +37,7 @@ public class Btree<E extends Comparable<E>> {
         }
     }
 
-    private E push(BNode<E> current, E key) {
+    private RegistroEstudiante push(BNode current, RegistroEstudiante key) {
         //Cuando llegue a la posición deseada
         if (current == null) {
             up = true;
@@ -54,7 +54,7 @@ public class Btree<E extends Comparable<E>> {
             return null;
         }
 
-        E mediana = push(current.childs.get(pos[0]),key);
+        RegistroEstudiante mediana = push(current.childs.get(pos[0]),key);
 
         if (up) {
             //En caso esté lleno
@@ -71,7 +71,7 @@ public class Btree<E extends Comparable<E>> {
         return mediana;
     }
 
-    private void putNode(BNode<E> current, E key, BNode<E> rightChild, int k) {
+    private void putNode(BNode current, RegistroEstudiante key, BNode rightChild, int k) {
 
         for (int i = current.count - 1; i >= k; i--) {
             current.keys.set(i + 1,current.keys.get(i));
@@ -86,11 +86,11 @@ public class Btree<E extends Comparable<E>> {
 
     //final Inserción
 
-    private E dividedNode(BNode<E> current, E key, int k) {
+    private RegistroEstudiante dividedNode(BNode current, RegistroEstudiante key, int k) {
 
-        BNode<E> rightFromChild = nDes;
+        BNode rightFromChild = nDes;
         int mid = orden / 2;
-        nDes = new BNode<>(orden);
+        nDes = new BNode(orden);
 
         for (int i = mid; i < orden - 1; i++) {
             nDes.keys.set(i - mid, current.keys.get(i));
@@ -106,18 +106,18 @@ public class Btree<E extends Comparable<E>> {
             putNode(nDes, key, rightFromChild, k - mid - 1);
         }
 
-        E median = current.keys.get(current.count - 1);
+        RegistroEstudiante median = current.keys.get(current.count - 1);
         nDes.childs.set(0,current.childs.get(current.count));
         current.count--;
 
         return median;
     }
     // Ejerc 01
-    public boolean search(E key) {
+    public boolean search(RegistroEstudiante key) {
         return searchRecursivo(root, key);
     }
 
-    private boolean searchRecursivo(BNode<E> current, E key) {
+    private boolean searchRecursivo(BNode current, RegistroEstudiante key) {
         if (current == null) return false;
 
         int[] pos = new int[1];
@@ -131,7 +131,7 @@ public class Btree<E extends Comparable<E>> {
         }
     }
 
-    public void delete(E cl) {
+    public void delete(RegistroEstudiante cl) {
         recDelete(root, cl);
 
         if (root != null && root.count == 0) {
@@ -140,7 +140,7 @@ public class Btree<E extends Comparable<E>> {
 
     }
 
-    private void recDelete(BNode<E> node, E cl) {
+    private void recDelete(BNode node, RegistroEstudiante cl) {
         if (node == null) return;
 
         int[] pos = new int[1];
@@ -151,9 +151,9 @@ public class Btree<E extends Comparable<E>> {
                 removeFromLeaf(node, pos[0]);
             } else {
 
-                BNode<E> succNode = node.childs.get(pos[0] + 1);
+                BNode succNode = node.childs.get(pos[0] + 1);
                 while (succNode.childs.get(0) != null) succNode = succNode.childs.get(0);
-                E succKey = succNode.keys.get(0);
+                RegistroEstudiante succKey = succNode.keys.get(0);
                 node.keys.set(pos[0], succKey);
                 recDelete(node.childs.get(pos[0] + 1), succKey);
 
@@ -161,7 +161,7 @@ public class Btree<E extends Comparable<E>> {
 
         } else {
 
-            BNode<E> child = node.childs.get(pos[0]);
+            BNode child = node.childs.get(pos[0]);
             if (child == null) return;
 
             if (child.count == (orden - 1) / 2) {
@@ -174,7 +174,7 @@ public class Btree<E extends Comparable<E>> {
 
     }
 
-    private void removeFromLeaf(BNode<E> node, int idx) {
+    private void removeFromLeaf(BNode node, int idx) {
 
         for (int i = idx; i < node.count - 1; i++) {
             node.keys  .set(i, node.keys  .get(i + 1));
@@ -186,13 +186,13 @@ public class Btree<E extends Comparable<E>> {
 
     }
 
-    private void fixChild(BNode<E> parent, int idxChild) {
+    private void fixChild(BNode parent, int idxChild) {
 
-        BNode<E> child = parent.childs.get(idxChild);
+        BNode child = parent.childs.get(idxChild);
 
         if (idxChild > 0) {
 
-            BNode<E> left = parent.childs.get(idxChild - 1);
+            BNode left = parent.childs.get(idxChild - 1);
 
             if (left.count > (orden - 1) / 2) {
                 borrowRight(child, parent, left, idxChild - 1);
@@ -202,7 +202,7 @@ public class Btree<E extends Comparable<E>> {
         }
 
         if (idxChild < parent.count) {
-            BNode<E> right = parent.childs.get(idxChild + 1);
+            BNode right = parent.childs.get(idxChild + 1);
             if (right.count > (orden - 1) / 2) {
                 borrowLeft(child, parent, right, idxChild);
                 return;
@@ -217,7 +217,7 @@ public class Btree<E extends Comparable<E>> {
 
     }
 
-    private void borrowRight(BNode<E> child, BNode<E> parent, BNode<E> left, int keyPosParent) {
+    private void borrowRight(BNode child, BNode parent, BNode left, int keyPosParent) {
 
         for (int i = child.count; i > 0; i--) {
             child.keys  .set(i, child.keys.get(i - 1));
@@ -234,7 +234,7 @@ public class Btree<E extends Comparable<E>> {
 
     }
 
-    private void borrowLeft(BNode<E> child, BNode<E> parent, BNode<E> right, int keyPosParent) {
+    private void borrowLeft(BNode child, BNode parent, BNode right, int keyPosParent) {
 
         child.keys.set(child.count, parent.keys.get(keyPosParent));
         child.childs.set(child.count + 1, right.childs.get(0));
@@ -252,10 +252,10 @@ public class Btree<E extends Comparable<E>> {
 
     }
 
-    private void merge(BNode<E> parent, int idx) {
+    private void merge(BNode parent, int idx) {
 
-        BNode<E> left  = parent.childs.get(idx);
-        BNode<E> right = parent.childs.get(idx + 1);
+        BNode left  = parent.childs.get(idx);
+        BNode right = parent.childs.get(idx + 1);
 
         left.keys.set(left.count, parent.keys.get(idx));
         left.childs.set(left.count + 1, right.childs.get(0));
@@ -281,7 +281,7 @@ public class Btree<E extends Comparable<E>> {
             s += "BTree is empty...";
         } else {
             // Asigna ID a cada nodo y padre:
-            assignIds(root, -1);
+            this.assignIds(root, -1);
             // Construye tabla:
             s = "| Id.Nodo | Claves Nodo | Id.Padre | Id.Hijos |\n";
             s += writeTree(root);
@@ -289,18 +289,7 @@ public class Btree<E extends Comparable<E>> {
         return s;
     }
 
-    private void assignIds(BNode<E> current, int idPadre) {
-        if (current == null) return;
-        current.idNodo = idCounter++;
-        current.idPadre = idPadre;
-        for (BNode<E> child : current.childs) {
-            if (child != null) {
-                assignIds(child, current.idNodo);
-            }
-        }
-    }
-
-    private String writeTree(BNode<E> current) {
+    private String writeTree(BNode current) {
         if (current == null) return "";
 
         // Configura ancho de columnas
@@ -319,7 +308,7 @@ public class Btree<E extends Comparable<E>> {
         // Hijos: convierte a lista de IDs
         StringBuilder hijos = new StringBuilder("[");
         boolean first = true;
-        for (BNode<E> child : current.childs) {
+        for (BNode child : current.childs) {
             if (child != null) {
                 if (!first) hijos.append(", ");
                 hijos.append(child.idNodo);
@@ -337,7 +326,7 @@ public class Btree<E extends Comparable<E>> {
                 .append(hijosStr).append(" |\n");
 
         // Procesa hijos recursivamente
-        for (BNode<E> child : current.childs) {
+        for (BNode child : current.childs) {
             if (child != null) {
                 sb.append(writeTree(child));
             }
@@ -349,18 +338,18 @@ public class Btree<E extends Comparable<E>> {
         return buscarNombreRecursivo(root, codigo);
     }
 
-    private String buscarNombreRecursivo(BNode<E> current, int codigo) {
+    private String buscarNombreRecursivo(BNode current, int codigo) {
         if (current == null) {
             return "No encontrado";
         }
 
         int[] pos = new int[1];
-        E buscado = (E) new RegistroEstudiante(codigo, "");
+        RegistroEstudiante buscado = (RegistroEstudiante) new RegistroEstudiante(codigo, "");
 
         boolean found = current.searchNode(buscado, pos);
 
         if (found) {
-            E foundItem = current.keys.get(pos[0]);
+            RegistroEstudiante foundItem = current.keys.get(pos[0]);
             if (foundItem instanceof RegistroEstudiante) {
                 return ((RegistroEstudiante) foundItem).getNombre();
             } else {
@@ -368,6 +357,16 @@ public class Btree<E extends Comparable<E>> {
             }
         } else {
             return buscarNombreRecursivo(current.childs.get(pos[0]), codigo);
+        }
+    }
+    public void assignIds(BNode current, int idPadre) {
+        if (current == null) return;
+        current.idNodo = idCounter++;
+        current.idPadre = idPadre;
+        for (BNode child : current.childs) {
+            if (child != null) {
+                assignIds(child, current.idNodo);
+            }
         }
     }
 
